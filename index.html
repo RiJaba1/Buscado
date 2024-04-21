@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/searcher.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Filtrador máquinas</title>
+</head>
+
+<body>
+    <h1 id="h1-index">Filtrador máquinas</h1>
+    <div class="buscador">
+        <div id="search-container">
+            <input type="search" id="search-input" placeholder="Búsqueda por nombre"
+                onmouseout="this.value = ''; this.blur();" />
+
+
+
+            <!--
+            <div class="container-filtrador">
+                <section>
+                    <section>
+                        <h3>Seleccionar por plataforma:</h3>
+                    </section>
+                    <section>
+                        <select id="platform-filter" multiple="multiple">
+                            <option value="all">Todas las plataformas</option>
+                            <option value="HackTheBox">HackTheBox</option>
+                            <option value="TryHackMe">TryHackMe</option>
+                            <option value="VulnHub">VulnHub</option>
+                            <option value="DockerLabs">DockerLabs</option>
+                            <option value="HackMyVM">HackMyVM</option>
+                            <option value="VulNyx">VulNyx</option>
+                            <option value="DeliciousHack">DeliciousHack</option>
+                        </select>
+                    </section>
+                </section>
+            </div>
+        -->
+            <div class="select-container">
+                <label for="platform-filter">Seleccionar por plataforma:</label>
+                <div class="select-options" id="platform-filter-options">
+                    <div class="option">
+                        <input type="checkbox" value="all" id="all-option">
+                        <label for="all-option">Todas las plataformas</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" value="HackTheBox" id="hackthebox-option">
+                        <label for="hackthebox-option">HackTheBox</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" value="TryHackMe" id="tryhackme-option">
+                        <label for="tryhackme-option">TryHackMe</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" value="VulnHub" id="vulnhub-option">
+                        <label for="vulnhub-option">VulnHub</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" value="DockerLabs" id="dockerlabs-option">
+                        <label for="dockerlabs-option">DockerLabs</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" value="HackMyVM" id="hackmyvm-option">
+                        <label for="hackmyvm-option">HackMyVM</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" value="VulNyx" id="vulnyx-option">
+                        <label for="vulnyx-option">VulNyx</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" value="DeliciousHack" id="delicioushack-option">
+                        <label for="delicioushack-option">DeliciousHack</label>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <button id="toggle-button">Ocultar elementos</button>
+        <div id="ctf-list" class="grid-container-cajas"></div>
+
+
+        <script>
+
+            document.getElementById('toggle-button').addEventListener('click', function () {
+                var hiddenElements = document.getElementById('ctf-list');
+                if (hiddenElements.classList.contains('hidden')) {
+                    hiddenElements.classList.remove('hidden');
+                    this.textContent = 'Ocultar Elementos';
+                } else {
+                    hiddenElements.classList.add('hidden');
+                    this.textContent = 'Mostrar Elementos';
+                }
+            });
+        </script>
+
+    </div>
+    <script src="js/searcher.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
