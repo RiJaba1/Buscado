@@ -245,10 +245,11 @@ body {
 .select-container {
   position: relative;
   display: inline-block;
+  margin-top: 7%;
 }
 
 .select-options {
-  position: absolute;
+  position: relative;
   top: 100%;
   left: 0;
   z-index: 10;
