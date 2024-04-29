@@ -23,32 +23,13 @@
 
 
 
-            <!--
-            <div class="container-filtrador">
-                <section>
-                    <section>
-                        <h3>Seleccionar por plataforma:</h3>
-                    </section>
-                    <section>
-                        <select id="platform-filter" multiple="multiple">
-                            <option value="all">Todas las plataformas</option>
-                            <option value="HackTheBox">HackTheBox</option>
-                            <option value="TryHackMe">TryHackMe</option>
-                            <option value="VulnHub">VulnHub</option>
-                            <option value="DockerLabs">DockerLabs</option>
-                            <option value="HackMyVM">HackMyVM</option>
-                            <option value="VulNyx">VulNyx</option>
-                            <option value="DeliciousHack">DeliciousHack</option>
-                        </select>
-                    </section>
-                </section>
-            </div>
-        -->
             <div class="select-container">
-                <label for="platform-filter">Seleccionar por plataforma:</label>
+                
+                <!-- Lista 1 -> seleccionar por plataforma -->
                 <div class="select-options" id="platform-filter-options">
+                    <label for="platform-filter">Seleccionar por plataforma:</label>
                     <div class="option">
-                        <input type="checkbox" value="all" id="all-option">
+                        <input type="checkbox" value="all" class="all-option">
                         <label for="all-option">Todas las plataformas</label>
                     </div>
                     <div class="option">
@@ -80,7 +61,29 @@
                         <label for="delicioushack-option">DeliciousHack</label>
                     </div>
                 </div>
+
+                <!-- Lista 2 -> seleccionar por SO -->
+                <div class="select-options" id="so-filter-options">
+                    <label for="so-filter">Seleccionar por plataforma:</label>
+                    <div class="option">
+                        <input type="checkbox" value="all" class="all-option">
+                        <label for="all-option">Todos los SO</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" value="HackTheBox" id="linux-option">
+                        <label for="hackthebox-option">HackTheBox</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" value="TryHackMe" id="windows-option">
+                        <label for="tryhackme-option">TryHackMe</label>
+                    </div>
+                </div>
+
             </div>
+
+
+        
+        
 
 
         </div>
