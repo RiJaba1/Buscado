@@ -1,39 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
     let listaCtf = {
         data: [
-            { nombreCTF: "Lo que sea", plataforma: "DeliciousHack" },
-            { nombreCTF: "Cualquier cosa", plataforma: "DeliciousHack" },
-            { nombreCTF: "Máquina 1", plataforma: "HackTheBox" },
-            { nombreCTF: "Máquina 2", plataforma: "TryHackMe" },
-            { nombreCTF: "Máquina 3", plataforma: "VulnHub" },
-            { nombreCTF: "Máquina 4", plataforma: "DockerLabs" },
-            { nombreCTF: "Máquina 5", plataforma: "HackTheBox" },
-            { nombreCTF: "Máquina 6", plataforma: "HackMyVM" },
-            { nombreCTF: "Máquina 7", plataforma: "VulNyx" },
-            { nombreCTF: "Máquina 8", plataforma: "HackMyVM" },
-            { nombreCTF: "Máquina 1", plataforma: "HackTheBox" },
-            { nombreCTF: "Máquina 2", plataforma: "TryHackMe" },
-            { nombreCTF: "Máquina 3", plataforma: "VulnHub" },
-            { nombreCTF: "Máquina 4", plataforma: "DockerLabs" },
-            { nombreCTF: "Máquina 5", plataforma: "HackTheBox" },
-            { nombreCTF: "Máquina 6", plataforma: "HackMyVM" },
-            { nombreCTF: "Máquina 7", plataforma: "VulNyx" },
-            { nombreCTF: "Máquina 8", plataforma: "HackMyVM" },
-            { nombreCTF: "Máquina 1", plataforma: "HackTheBox" },
-            { nombreCTF: "Máquina 2", plataforma: "TryHackMe" },
-            { nombreCTF: "Máquina 3", plataforma: "VulnHub" },
-            { nombreCTF: "Máquina 4", plataforma: "DockerLabs" },
-            { nombreCTF: "Máquina 5", plataforma: "HackTheBox" },
-            { nombreCTF: "Máquina 6", plataforma: "HackMyVM" },
-            { nombreCTF: "Máquina 7", plataforma: "VulNyx" },
-            { nombreCTF: "Máquina 8", plataforma: "HackMyVM" }
+            { nombreCTF: "Lo que sea", plataforma: "DeliciousHack", SO: "Linux" },
+            { nombreCTF: "Cualquier cosa", plataforma: "DeliciousHack", SO: "Windows" },
+            { nombreCTF: "Máquina 1", plataforma: "HackTheBox", SO: "Linux" },
+            { nombreCTF: "Máquina 2", plataforma: "TryHackMe", SO: "Windows" },
+            { nombreCTF: "Máquina 3", plataforma: "VulnHub", SO: "Linux" },
+            { nombreCTF: "Máquina 4", plataforma: "DockerLabs", SO: "Windows" },
+            { nombreCTF: "Máquina 5", plataforma: "HackTheBox", SO: "Linux" },
+            { nombreCTF: "Máquina 6", plataforma: "HackMyVM", SO: "Linux" },
+            { nombreCTF: "Máquina 7", plataforma: "VulNyx", SO: "Windows" },
+            { nombreCTF: "Máquina 8", plataforma: "HackMyVM", SO: "Linux" }
         ]
     };
 
     // Function to create ctf cards
     function createctfCard(ctf) {
         let card = document.createElement("div");
-        card.classList.add("card", ctf.plataforma);
+        card.classList.add("card", ctf.plataforma, ctf.SO);
 
         let container = document.createElement("div");
         container.classList.add("container");
@@ -45,32 +29,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let plataforma = document.createElement("h6");
         plataforma.classList.add("plataforma-name");
-        plataforma.innerText = "Plataforma: " + ctf.plataforma;
+        plataforma.innerText = "Plataforma: " + (ctf.plataforma === 'all' ? 'Todas las plataformas' : ctf.plataforma);
         container.appendChild(plataforma);
+
+        let so = document.createElement("h6");
+        so.classList.add("so-name");
+        so.innerText = "Sistema Operativo: " + (ctf.SO === 'all' ? 'Todos los SO' : ctf.SO);
+        container.appendChild(so);
 
         card.appendChild(container);
         document.getElementById("ctf-list").appendChild(card);
-    }
-
-    // Function to filter listaCtf by plataforma
-    function filterPlataforma(values) {
-        let elements = document.querySelectorAll(".card");
-        elements.forEach((element) => {
-            let shouldShow = values.includes("all") || values.some((value) => element.classList.contains(value));
-            if (shouldShow) {
-                element.classList.remove("hide");
-            } else {
-                element.classList.add("hide");
-            }
-        });
     }
 
     // Add an event listener for the checkboxes
     let checkboxes = document.querySelectorAll(".select-options input[type='checkbox']");
     checkboxes.forEach((checkbox) => {
         checkbox.addEventListener("change", function () {
-            let selectedValues = Array.from(document.querySelectorAll(".select-options input[type='checkbox']:checked"), (checkbox) => checkbox.value);
-            filterPlataforma(selectedValues);
+            let selectedPlatforms = Array.from(document.querySelectorAll("#platform-filter-options input[type='checkbox']:checked"), (checkbox) => checkbox.value);
+            let selectedSOs = Array.from(document.querySelectorAll("#so-filter-options input[type='checkbox']:checked"), (checkbox) => checkbox.value);
+            filterCtf(selectedPlatforms, selectedSOs);
         });
     });
 
